@@ -1,0 +1,387 @@
+/* ── Base layout ───────────────────────────── */
+.dashboard {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f0f13;
+  min-height: 100vh;
+  color: #e2e8f0;
+}
+
+/* ── Header ────────────────────────────────── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.liveChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.liveDot {
+  width: 7px;
+  height: 7px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.85); }
+}
+
+.lastUpdated {
+  font-size: 12px;
+  color: #475569;
+}
+
+/* ── Recalibrate ─────────────────────────── */
+.recalibrateRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.recalibrateBtn {
+  background: #1a1a24;
+  border: 1px solid #4d4d6d;
+  color: #e2e8f0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recalibrateBtn:hover:not(:disabled) {
+  border-color: #7F77DD;
+  color: #ffffff;
+  background: #22223a;
+}
+
+.recalibrateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recalibMsg {
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.recalibrateHint {
+  font-size: 12px;
+  color: #475569;
+  margin-left: auto;
+}
+
+/* ── Occupancy bar ──────────────────────────── */
+.occupancySection {
+  background: #1a1a24;
+  border: 1px solid #2d2d3d;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.occupancyHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.occupancyLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.occupancyCount {
+  font-size: 20px;
+  color: #e2e8f0;
+}
+
+.occupancyCount strong {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.occupancyCount span {
+  font-size: 15px;
+  color: #64748b;
+}
+
+.occupancyPct {
+  margin-left: auto;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.occupancyBar {
+  position: relative;
+  height: 16px;
+  background: #2d2d3d;
+  border-radius: 8px;
+  overflow: visible;
+}
+
+.occupancyFill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.5s ease, background 0.3s ease;
+  min-width: 4px;
+}
+
+.safeMarker {
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 24px;
+  background: #f59e0b;
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+.safeMarker::after {
+  content: "safe";
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #f59e0b;
+  white-space: nowrap;
+}
+
+.occupancyLegend {
+  display: flex;
+  font-size: 11px;
+  color: #475569;
+  margin-top: 8px;
+}
+
+/* ── Metric cards grid ──────────────────────── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #1a1a24;
+  border: 1px solid #2d2d3d;
+  border-radius: 14px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: #4d4d6d;
+}
+
+.cardLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+.cardValue {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+.cardSub {
+  font-size: 12px;
+  color: #475569;
+}
+
+/* ── Video + zone preview row ───────────────── */
+.mediaRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.videoCard {
+  background: #1a1a24;
+  border: 1px solid #2d2d3d;
+  border-radius: 14px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.videoFeed {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  background: #0a0a0f;
+  min-height: 200px;
+  object-fit: cover;
+}
+
+/* ── Charts ─────────────────────────────────── */
+.chartCard {
+  background: #1a1a24;
+  border: 1px solid #2d2d3d;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.noData {
+  text-align: center;
+  color: #475569;
+  padding: 40px 0;
+  font-size: 14px;
+}
+
+/* ── Heatmap ─────────────────────────────────── */
+.heatmap {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 100px;
+  padding-top: 8px;
+}
+
+.heatCell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 4px;
+}
+
+.heatFill {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.3s ease, background 0.3s ease;
+}
+
+.heatLabel {
+  font-size: 9px;
+  color: #475569;
+  white-space: nowrap;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+/* ── Offline screen ──────────────────────────── */
+.offlineContainer {
+  min-height: 100vh;
+  background: #0f0f13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offlineBox {
+  text-align: center;
+  padding: 48px;
+  background: #1a1a24;
+  border: 1px solid #2d2d3d;
+  border-radius: 20px;
+  max-width: 400px;
+}
+
+.offlineDot {
+  width: 16px;
+  height: 16px;
+  background: #ef4444;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+
+.offlineBox h2 {
+  color: #ffffff;
+  margin: 0 0 8px;
+}
+
+.offlineBox p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.offlineBox code {
+  background: #0f0f13;
+  border: 1px solid #2d2d3d;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #10b981;
+  display: block;
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  .dashboard { padding: 16px; }
+  .mediaRow  { grid-template-columns: 1fr; }
+  .cardsGrid { grid-template-columns: repeat(2, 1fr); }
+  .header    { flex-direction: column; gap: 12px; }
+}
